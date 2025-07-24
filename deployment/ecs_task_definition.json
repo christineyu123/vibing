@@ -1,0 +1,28 @@
+{
+  "family": "vibing-task",
+  "networkMode": "awsvpc",
+  "requiresCompatibilities": ["EC2"],
+  "cpu": "512",
+  "memory": "1024",
+  "containerDefinitions": [
+    {
+      "name": "backend",
+      "image": "<BACKEND_IMAGE_URI>",
+      "essential": true,
+      "portMappings": [
+        { "containerPort": 5000, "hostPort": 5000 }
+      ],
+      "environment": [
+        { "name": "FLASK_ENV", "value": "production" }
+      ]
+    },
+    {
+      "name": "frontend",
+      "image": "<FRONTEND_IMAGE_URI>",
+      "essential": true,
+      "portMappings": [
+        { "containerPort": 80, "hostPort": 80 }
+      ]
+    }
+  ]
+} 
